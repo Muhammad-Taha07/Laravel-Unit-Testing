@@ -7,20 +7,13 @@ use App\Models\User;
 
 class UserTest extends TestCase
 {
-
-    // public function test_example()
-    // {
-    //     $response = $this->get('/logins');
-    //     $response->assertStatus(200);
-    // }
-
-  /* TESTING LOGIN ROUTE */
+    /* TESTING LOGIN ROUTE */
     public function test_login_form()
     {
         $response = $this->get('/login');
         $this->assertTrue(true);
     }
-//   /* USER DUPLICATION TEST */
+    /* USER DUPLICATION TEST TO CHECK WHETHER OR NOT USERS ARE SAME */
     public function test_user_duplication()
     {
         $user1 = User::make([
@@ -29,11 +22,22 @@ class UserTest extends TestCase
         ]);
 
         $user2 = User::make([
-            'name' =>  'Donny Doe',
-            'email' => 'dondoe1@yopmail.com'
+            'name'  =>  'Jovonowich',
+            'email' =>  'masterAssasin007@yopmail.com'
         ]);
-        
 
         $this->assertTrue($user1->name != $user2->name);
+    }
+    /* TEST METHOD TO CREATE A NEW RANDOM USER & DELETE IT*/
+    public function test_delete_user()
+    {
+        $createUser = User::factory()->count(1)->make();
+        $user = User::first();
+
+        if($user) {
+            $user->delete();
+        }
+
+        $this->assertTrue(true);
     }
 }
