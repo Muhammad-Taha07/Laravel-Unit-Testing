@@ -44,12 +44,23 @@ class UserTest extends TestCase
     public function test_Add_new_users()
     {
         $response = $this->post('/register', [
-            'name'                   =>      'Muhammad Taha',
-            'email'                  =>      'backend_admin@yopmail.com',
+            'name'                   =>      'Muhammad Talha',
+            'email'                  =>      'backend_admin111@yopmail.com',
             'password'               =>      'asd$A123',
             'password_confirmation'  =>      'asd$A123'
         ]);
 
         $response->assertRedirect('/home');
     }
+
+    /* METHOD TO TEST DATABASE-HAS ASSERTION */
+    public function test_database()
+    {
+        $this->assertDatabaseHas('users',
+        [
+            'name'      =>      'Muhammad Taha',
+            'email'     =>      'backend_admin@yopmail.com'
+        ]);
+    }
+
 }
