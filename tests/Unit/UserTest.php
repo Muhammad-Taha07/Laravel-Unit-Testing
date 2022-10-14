@@ -52,6 +52,11 @@ class UserTest extends TestCase
 
         $response->assertRedirect('/home');
     }
+/*
+-------------------------------------------------------------------------------------------------------------------------------------
+                                                DATABASE TESTING METHODS
+-------------------------------------------------------------------------------------------------------------------------------------
+*/
 
     /* METHOD TO TEST DATABASE-HAS ASSERTION */
     public function test_database()
@@ -60,6 +65,15 @@ class UserTest extends TestCase
         [
             'name'      =>      'Muhammad Taha',
             'email'     =>      'backend_admin@yopmail.com'
+        ]);
+    }
+
+    /* METHOD TO TEST DATABASE-MISSING ASSERTION */
+    public function test_missing_database()
+    {
+        $this->assertDatabaseMissing('users', [
+            'name'      =>      'Shahid',
+            'email'     =>      'Khan'
         ]);
     }
 
