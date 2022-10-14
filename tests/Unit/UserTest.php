@@ -40,4 +40,16 @@ class UserTest extends TestCase
 
         $this->assertTrue(true);
     }
+    /* USER WILL BE REDIRECTED TO HOMEPAGE UPON SUCCESSFULL REGISTRATION */
+    public function test_Add_new_users()
+    {
+        $response = $this->post('/register', [
+            'name'                   =>      'Muhammad Taha',
+            'email'                  =>      'backend_admin@yopmail.com',
+            'password'               =>      'asd$A123',
+            'password_confirmation'  =>      'asd$A123'
+        ]);
+
+        $response->assertRedirect('/home');
+    }
 }
