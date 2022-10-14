@@ -7,6 +7,11 @@ use App\Models\User;
 
 class UserTest extends TestCase
 {
+
+/* Do make Sure to disable/Commenting Out the rest of the methods before using database test cases
+   Not Commenting Out/Disabling those methods will end up failing testcases and as well as conflicting
+   with others and generate errors, failing to execute the rest of the test cases.
+*/
     /* TESTING LOGIN ROUTE */
     public function test_login_form()
     {
